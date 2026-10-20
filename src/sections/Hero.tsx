@@ -24,8 +24,8 @@ export default function Hero() {
                   13 años de experiencia en asesoría contable y tributaria, nacional y distrital
                 </div>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <Button href="#contacto">Habla conmigo <Icon name="arrow" className="size-4" /></Button>
-                  <Button href="#servicios" variant="outline">Ver servicios</Button>
+                  <Button href="/#contacto">Habla conmigo <Icon name="arrow" className="size-4" /></Button>
+                  <Button href="/#servicios" variant="outline">Ver servicios</Button>
                 </div>
               </div>
             </div>

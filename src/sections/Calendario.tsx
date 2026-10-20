@@ -9,7 +9,7 @@ export default function Calendario() {
             <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               {dates.map((date) => <DateCard key={`${date.day}-${date.title}`} date={date} />)}
             </div>
-            <div className="mt-8 text-center"><Button variant="outline">Ver calendario completo <Icon name="calendar" className="size-4" /></Button></div>
+            <div className="mt-8 text-center"><Button href="/calendario-tributario" variant="outline">Ver calendario completo <Icon name="calendar" className="size-4" /></Button></div>
           </div>
         </section>
   );

@@ -3,9 +3,9 @@ import { useState } from "react";
 import Button from "./Button";
 import Icon from "./Icons";
 import Logo from "./Logo";
-
-// ───── ZONA 2: los datos (la lista del menú, cortada de App.tsx) ─────
-const nav = ["Inicio", "Servicios", "Sobre mí", "Recursos", "Contacto"];
+import SmartLink from "./SmartLink";
+import { navegacion } from "../data/sitio";
+import { enlaceWhatsApp } from "../lib/whatsapp";
 
 // ───── ZONA 3: la función (el componente) ─────
 export default function Header() {
@@ -21,20 +21,19 @@ export default function Header() {
           className="hidden items-center gap-8 lg:flex"
           aria-label="Navegación principal"
         >
-          {nav.map((item) => (
-            <a
-              key={item}
-              href={`#${item
-                .toLowerCase()
-                .replace(" ", "-")
-                .replace("í", "i")}`}
+          {navegacion.map((item) => (
+            <SmartLink
+              key={item.ruta}
+              to={item.ruta}
               className="text-[13px] font-semibold text-[#3f443f] transition hover:text-[#0B6B1E]"
             >
-              {item}
-            </a>
+              {item.texto}
+            </SmartLink>
           ))}
         </nav>
-        <Button className="hidden lg:inline-flex">Agenda tu asesoría</Button>
+                <div className="hidden lg:block">
+                  <Button href={enlaceWhatsApp("Hola Angie, quiero agendar una asesoría.")}>Agenda tu asesoría</Button>
+                </div>
         <button
           type="button"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -47,20 +46,17 @@ export default function Header() {
       {menuOpen && (
         <div className="absolute left-0 right-0 top-full border-t border-black/5 bg-white p-5 shadow-xl lg:hidden">
           <nav className="flex flex-col gap-1">
-            {nav.map((item) => (
-              <a
-                key={item}
-                href={`#${item
-                  .toLowerCase()
-                  .replace(" ", "-")
-                  .replace("í", "i")}`}
+            {navegacion.map((item) => (
+              <SmartLink
+                key={item.ruta}
+                to={item.ruta}
                 onClick={() => setMenuOpen(false)}
                 className="rounded-lg px-3 py-3 text-sm font-semibold hover:bg-[#F5F7F5]"
               >
-                {item}
-              </a>
+                {item.texto}
+              </SmartLink>
             ))}
-            <Button className="mt-3 w-full">Agenda tu asesoría</Button>
+            <Button href={enlaceWhatsApp("Hola Angie, quiero agendar una asesoría.")} className="mt-3 w-full">Agenda tu asesoría</Button>
           </nav>
         </div>
       )}

@@ -1,5 +1,7 @@
 import Logo from "./Logo";
 import Icon, { type IconName } from "./Icons";
+import SmartLink from "./SmartLink";
+import { navegacion } from "../data/sitio";
 
 export default function Footer() {
   return (
@@ -15,14 +17,16 @@ export default function Footer() {
                 <p>Bogotá, Colombia</p>
               </div>
             </div>
-            <div><p className="text-xs font-bold uppercase tracking-[0.18em] text-[#75c582]">Enlaces rápidos</p><div className="mt-5 grid gap-3 text-sm text-white/65">{["Servicios", "Sobre mí", "Recursos", "Contacto"].map((link) => <a key={link} href="#" className="hover:text-white">{link}</a>)}</div></div>
+            <div><p className="text-xs font-bold uppercase tracking-[0.18em] text-[#75c582]">Enlaces rápidos</p><div className="mt-5 grid gap-3 text-sm text-white/65">{navegacion.map((link) => (
+  <SmartLink key={link.ruta} to={link.ruta} className="hover:text-white">{link.texto}</SmartLink>
+))}</div></div>
           </div>
           <div className="flex flex-col gap-6 pt-8 text-xs text-white/40 md:flex-row md:items-center md:justify-between">
-            <p>© 2025 Angie Buitrago. Todos los derechos reservados.</p>
+            <p>© {new Date().getFullYear()}</p>
             <div className="flex items-center gap-3">
               {(["instagram", "facebook", "linkedin"] as IconName[]).map((social) => <a key={social} href="#" aria-label={social} className="flex size-9 items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-white/40 hover:text-white"><Icon name={social} className="size-4" /></a>)}
             </div>
-            <a href="#" className="hover:text-white">Tratamiento de datos personales</a>
+            <SmartLink to="/politica-de-datos" className="hover:text-white">Tratamiento de datos personales</SmartLink>
           </div>
         </div>
       </footer>
